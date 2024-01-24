@@ -5,4 +5,4 @@ from app.models import Post
 # Register your models here.
 @admin.register(Post)
 class PostAdimn(admin.ModelAdmin):
-    list_display = ("title", "publish", "highlighted", "author")
+    list_display = ("title", "status", "publish", "highlighted", "author", "slug")
