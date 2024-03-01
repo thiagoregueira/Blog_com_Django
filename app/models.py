@@ -34,6 +34,12 @@ class Post(models.Model):
     objects = models.Manager()
     published = PostManager()
 
+    @classmethod
+    def get_latest_post(cls, num_post=3):
+        return cls.objects.filter(status=cls.Status.PUBLISHED).order_by("-publish")[
+            :num_post
+        ]
+
     def get_absolute_url(self):
         return reverse(
             "blog:post_detail",
@@ -47,3 +53,15 @@ class Post(models.Model):
 
     def __str__(self):
         return f" {self.title} por {self.author}"
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    name = models.CharField(max_length=200)
+    active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    email = models.EmailField()
+    content = models.TextField()
+
+    def __str__(self):
+        return f"Comentário de {self.name} em {self.post}"
