@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from app.models import Post
+from app.forms import CommentForm
 
 # Create your views here.
 
@@ -21,10 +22,12 @@ def post_detail(request, day, month, year, slug):
         Post, publish__day=day, publish__month=month, publish__year=year, slug=slug
     )
     latest_posts = Post.get_latest_post(3)
-    comments = post.comments.all()
+    comments = post.comments.filter(active=True)
+    form = CommentForm()
     context = {
         "post": post,
         "latest_posts": latest_posts,
         "comments": comments,
+        "form": form,
     }
     return render(request, "post_detail.html", context)

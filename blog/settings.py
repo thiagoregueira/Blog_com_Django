@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # internal apps
     "app",
+    # external apps
+    "bootstrapform",
 ]
 
 MIDDLEWARE = [

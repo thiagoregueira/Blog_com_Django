@@ -19,8 +19,10 @@
     <!-- Post content-->
     <section class="mb-5">
         <div class="text-center fs-1">{{ post.title }}</div>
-
         <p class="fs-5 mb-4">{{ post.content }}</p>
     </section>
 </article>
+<div>
+    {% include "comments.html" %}
+</div>
 {% endblock %}

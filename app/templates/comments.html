@@ -1,0 +1,36 @@
+{% block content %}
+<div class="row d-flex justify-content-center">
+    <div class="col-md-12 col-lg-12">
+        <h4 class="mb-0">Posts mais recentes</h4>
+        <p class="fw-light mb-4 pb-2">Últimos comentários</p>
+        <div class="card">
+            <div class="card-body p-4">
+                {% for comment in comments %}
+                <div class="comment mb-4 d-flex align-items-start col-md-12 ">
+                    <img class="rounded-circle shadow-1-strong me-3"
+                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp" alt="avatar" width="60"
+                        height="60" />
+                    <div>
+                        <h6 class="fw-bold mb-1">{{ comment.name }}</h6>
+                        <div class="d-flex align-items-center mb-3">
+                            <p class="mb-0">
+                                {{ comment.created_at }}
+                                <span class="badge bg-primary">{{ comment.active }}</span>
+                            </p>
+
+                        </div>
+                        <p class="fs-10 comment-content" style="word-wrap: break-word;">
+                            {{ comment.content }}
+                        </p>
+                    </div>
+                </div>
+                <hr>
+                {% empty %}
+                <h1 class="fs-1">Não há comentários</h1>
+                {% include "comment_form.html" %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
