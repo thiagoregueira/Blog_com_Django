@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "app",
     # external apps
     "bootstrapform",
+    "taggit",
 ]
 
 MIDDLEWARE = [

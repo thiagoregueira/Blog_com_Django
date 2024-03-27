@@ -1,6 +1,6 @@
 {% load bootstrap %}
 <h2 class="mt-5">Adicionar comentário</h2>
-<form class="col-md-8 mt-" action="#" method="POST">
+<form class="col-md-8 mt-" action="{% url 'blog:post_comment' post.id %}" method="POST">
     {% csrf_token %}
     {{ form|bootstrap }}
     <p><input type="submit" class="btn btn-outline-dark mt-2" value="Add comentário"></p>

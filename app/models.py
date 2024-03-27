@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils.text import slugify
 from django.db.models import QuerySet
+from taggit.managers import TaggableManager
 
 
 # Create your models here.
@@ -33,6 +34,7 @@ class Post(models.Model):
     highlighted = models.BooleanField(default=False)
     objects = models.Manager()
     published = PostManager()
+    tags = TaggableManager()
 
     @classmethod
     def get_latest_post(cls, num_post=3):
